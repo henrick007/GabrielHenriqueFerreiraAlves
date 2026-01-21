@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/artists") // TODOS OS COMANDOS AQUI IRA COMEÇAR COM "localhost:8080/artists"
+@RequestMapping("/v1/artists") // TODOS OS COMANDOS AQUI IRA COMEÇAR COM "localhost:8080/artists"
 public class ArtistController {
 
     @Autowired
