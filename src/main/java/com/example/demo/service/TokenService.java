@@ -1,3 +1,7 @@
+/*
+    ARQUIVO TOKENSERVICE.JAVA: NESSA LOGICA VAI SER GERADO O TOKEN E VAI VERIFICAR SE ELE É VALIDO.
+*/
+
 package com.example.demo.service;
 
 import io.jsonwebtoken.Jwts;
