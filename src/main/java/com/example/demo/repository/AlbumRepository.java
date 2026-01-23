@@ -12,5 +12,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long> {
-    Page<Album> findByTitleContainingIgnoreCaseAndArtistType(String title, String Type, Pageable pageable);
+
+    Page<Album> findByTitleContainingIgnoreCaseAndArtist_Type(
+            String title,
+            String type,
+            Pageable pageable
+    );
 }

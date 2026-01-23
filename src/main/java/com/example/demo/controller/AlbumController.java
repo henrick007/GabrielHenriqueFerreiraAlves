@@ -5,12 +5,17 @@
 
 package com.example.demo.controller;
 
+import com.example.demo.dto.AlbumRequestDTO;
 import com.example.demo.model.Album;
-import com.example.demo.repository.AlbumRepository;
+import com.example.demo.service.AlbumService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,22 +23,23 @@ import org.springframework.web.bind.annotation.*;
 public class AlbumController {
 
     @Autowired
-    private AlbumRepository repository;
+    private AlbumService service;
  
     @GetMapping
     public Page<Album> list(
-            @RequestParam(required = false, defaultValue = "") String title,
-            @RequestParam(required = false) String artistType,
-            @PageableDefault(size = 10, sort = "title") Pageable pageable) {
-        
-        if (artistType != null) {
-            return repository.findByTitleContainingIgnoreCaseAndArtistType(title, artistType, pageable);
-        }
-        return repository.findAll(pageable);
-    }
+        @RequestParam(required = false, defaultValue = "") String title,
+        @RequestParam(required = false) String artistType,
+        @PageableDefault(size = 10, sort = "title") Pageable pageable
+) {
+    return service.list(title, artistType, pageable);
+}
+
+
 
     @PostMapping
-    public Album create(@RequestBody Album album) {
-        return repository.save(album);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    public Album create(@RequestBody @Valid AlbumRequestDTO dto) {
+    return service.create(dto);
+}
+
 }

@@ -5,27 +5,32 @@
 
 package com.example.demo.controller;
 
+import com.example.demo.dto.ArtistRequestDTO;
 import com.example.demo.model.Artist;
-import com.example.demo.repository.ArtistRepository;
+import com.example.demo.service.ArtistService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/artists") // TODOS OS COMANDOS AQUI IRA COMEÇAR COM "localhost:8080/artists"
+@RequestMapping("/v1/artists")
 public class ArtistController {
 
     @Autowired
-    private ArtistRepository repository;
+    private ArtistService service;
 
     @GetMapping
     public List<Artist> listAll() {
-        return repository.findAll();
+        return service.listAll();
     }
 
     @PostMapping
-    public Artist create(@RequestBody Artist artist) {
-        return repository.save(artist);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    public Artist create(@RequestBody @Valid ArtistRequestDTO dto) {
+    return service.create(dto);
+}
+
 }
