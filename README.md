@@ -9,11 +9,17 @@ Vaga: Engenheiro da Computação - Back-end <br>
 
 # PROGRAMAS NECESSARIOS PARA EXECUÇÃO DO PROJETO
 
+# OPÇÃO 1 - EXECUÇÃO LOCAL (SEM DOCKER)
 - Java JDK 21 <br>
 - Maven 3.9+ <br>
 - MySQL 8+ <br>
 - GIT (Opcional, somente para clonar o repositório) <br>
 - IDE Java (Utilizri VS code) <br>
+
+# OPÇÃO 2 - EXECUÇÃO COM DOCKER (RECOMENDADO)
+- DOCKER <br>
+- DOCKER COMPOSE <br>
+OBS: Usando a opção do Docker não é necessário instalar JAVA, MAVEN ou MYSQL na sua máquina
 
 # PARA EXECUTAR O PROJETO EM SEU COMPUTADOR (COM OS PROGRAMAS JÁ INSTALADOS)
 
@@ -27,6 +33,14 @@ Vaga: Engenheiro da Computação - Back-end <br>
     api.security.token.expiration-minutes=5 <br>
 3. Abra o terminal na IDE e digite "./mvnw spring-boot:run" a aplicação sera iniciada; <br>
 4. Acesse o Swagger atraves do link "http://localhost:8080/swagger-ui.html"; <br>
+
+# PARA EXECUTAR O PROJETO COM DOCKER
+1. Instale o docker pelo terminal ou em seu desktop, para confirmar a instalação va ao terminal e coloque "docker --version" depois "docker compose --version"; <br>
+2. Depois de instalados, execute o projeto com o comando "docker compose up --build", esse comando vai baixar as imagens necessárias, criar os containers, iniciar o banco de dados e executar a aplicação Spring Boot <br>
+3. Para confirmar o sucesso da execução basta verificar no terminal se apareceram as frases: <br>
+    Para o MySQL: ready for connections; <br>
+    Para o Spring Boot: Tomcat started on port 8080 <br>
+4. Depois disso só acessar o Swagger UI: http://localhost:8080/swagger-ui.html e fazer o processo de consumação da API.
 
 # TESTES/ FUNCIONAMENTO DA APLICAÇÃO
 
@@ -47,6 +61,6 @@ Vaga: Engenheiro da Computação - Back-end <br>
     - Para ver os albums criados, va em "GET /v1/albums" clique em try it out depois em executar, logo abaixo vai aparecer todos os albums criados.
 
 4. Testes Unitários: 
-    - Testes unitários se encontra dentro da pasta de "test" no caminho /src/main/resources/test/java/com/example/demo, só abrir na IDE com as extensões de JAVA instalado e ir clicando em run em cada arquivo criado la.
+    - Testes unitários se encontra dentro da pasta de "test" no caminho /src/main/resources/test/java/com/example/demo, só abrir na IDE(recomendado: VS code) com as extensões de JAVA instalado e ir clicando em run em cada arquivo criado la.
 
 
