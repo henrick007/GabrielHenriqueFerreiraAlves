@@ -5,18 +5,20 @@ N° Inscrição: 16386 <br>
 Gabriel Henrique Ferreira Alves <br>
 CPF: 019.825.091-63 <br>
 E-mail: gabrielhf257@gmail.com <br>
-Vaga: Engenheiro da Computação - Back-end <br>
+Vaga: Engenheiro da Computação - Back-end<br>
+
+# DOCUMENTAÇÃO DO PROJETO EM PDF
+
 
 # PROGRAMAS NECESSARIOS PARA EXECUÇÃO DO PROJETO
-
-# OPÇÃO 1 - EXECUÇÃO LOCAL (SEM DOCKER)
+ *OPÇÃO 1 - EXECUÇÃO LOCAL (SEM DOCKER)*
 - Java JDK 21 <br>
 - Maven 3.9+ <br>
 - MySQL 8+ <br>
 - GIT (Opcional, somente para clonar o repositório) <br>
 - IDE Java (Utilizri VS code) <br>
 
-# OPÇÃO 2 - EXECUÇÃO COM DOCKER (RECOMENDADO)
+ *OPÇÃO 2 - EXECUÇÃO COM DOCKER (RECOMENDADO)*
 - DOCKER <br>
 - DOCKER COMPOSE <br>
 OBS: Usando a opção do Docker não é necessário instalar JAVA, MAVEN ou MYSQL na sua máquina
@@ -61,6 +63,11 @@ OBS: Usando a opção do Docker não é necessário instalar JAVA, MAVEN ou MYSQ
     - Para ver os albums criados, va em "GET /v1/albums" clique em try it out depois em executar, logo abaixo vai aparecer todos os albums criados.
 
 4. Testes Unitários: 
-    - Testes unitários se encontra dentro da pasta de "test" no caminho /src/main/resources/test/java/com/example/demo, só abrir na IDE(recomendado: VS code) com as extensões de JAVA instalado e ir clicando em run em cada arquivo criado la.
+    - Testes unitários se encontra dentro da pasta de "test" no caminho /src/main/resources/test/java/com/example/demo, só abrir na IDE(recomendado: VS code) com as extensões de JAVA instalado e ir clicando em run em cada arquivo criado la; <br>
+    - Foram criados 5 testes unitarios, são eles AlbumControllerTest.java, ArtistControllerTest.java, AuthControllerTest.java, AlbumServiceTest.Java & ArtistServiceTest.java.
+
+# OBSERVAÇÕES
+    - Projeto back-end feito com sucesso de acordo com todos os meu conhecimentos e requisitos solicitados, escolhi o back-end, mas tenho bastante familiaridade e carinho pelo front-end;
+    - A parte dos requisitos para sênior foi desenvolvida como proatividade e curiosidade, mas não sou sênior no momento;
 
 

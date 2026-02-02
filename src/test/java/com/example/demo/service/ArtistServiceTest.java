@@ -3,42 +3,61 @@ package com.example.demo.service;
 import com.example.demo.dto.ArtistRequestDTO;
 import com.example.demo.model.Artist;
 import com.example.demo.repository.ArtistRepository;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ArtistServiceTest {
 
-    @Mock
-    private ArtistRepository repository;
-
     @InjectMocks
-    private ArtistService service;
+    private ArtistService artistService;
+
+    @Mock
+    private ArtistRepository artistRepository;
 
     @Test
-    void shouldCreateArtist() {
-        ArtistRequestDTO dto = new ArtistRequestDTO("Metallica", "BAND");
+    void deveCriarArtistaComSucesso() {
+        ArtistRequestDTO dto = new ArtistRequestDTO(
+                "Linkin Park",
+                "Banda"
+        );
 
-        Artist artistSaved = new Artist();
-        artistSaved.setId(1L);
-        artistSaved.setName("Metallica");
-        artistSaved.setType("BAND");
+        when(artistRepository.save(any(Artist.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
-        when(repository.save(any(Artist.class))).thenReturn(artistSaved);
+        Artist artist = artistService.create(dto);
 
-        Artist result = service.create(dto);
+        assertNotNull(artist);
+        assertEquals("Linkin Park", artist.getName());
+        assertEquals("Banda", artist.getType());
 
-        assertThat(result).isNotNull();
-        assertThat(result.getId()).isEqualTo(1L);
-        assertThat(result.getName()).isEqualTo("Metallica");
-        assertThat(result.getType()).isEqualTo("BAND");
+        verify(artistRepository).save(any(Artist.class));
+    }
 
-        verify(repository, times(1)).save(any(Artist.class));
+    @Test
+    void deveListarTodosOsArtistas() {
+        Artist artist = new Artist();
+        artist.setName("Linkin Park");
+        artist.setType("Banda");
+
+        when(artistRepository.findAll())
+                .thenReturn(List.of(artist));
+
+        List<Artist> artists = artistService.listAll();
+
+        assertEquals(1, artists.size());
+        assertEquals("Linkin Park", artists.get(0).getName());
+        assertEquals("Banda", artists.get(0).getType());
+
+        verify(artistRepository).findAll();
     }
 }
